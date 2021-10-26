@@ -11,12 +11,12 @@ items.forEach((item)=>{
 
 
 
-for (placeholder of placeholders) {
+	placeholders.forEach((placeholder)=> {
 	placeholder.addEventListener('dragover', dragOver)
 	placeholder.addEventListener('dragenter', dragEnter)
 	placeholder.addEventListener('dragleave', dragleave)
 	placeholder.addEventListener('drop', dragDrop)
-}
+})
 
 })
 
