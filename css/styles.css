@@ -46,11 +46,20 @@ body {
 }
 .item:hover, .item:focus, .item:active{cursor: move;}
 
-.placeholder {width: 33%; height: 45vh;}
+.placeholder {
+  width: calc(33% - 20px);
+  margin:0 10px;
+  min-height: 45vh;
+  padding: 10px;
+  background-color: rgba(0,0,0,.05);
+  border:1px solid rgba(255,255,255, 0.73);
+  box-shadow:  1px 1px 13px -5px rgba(0,0,0,0.27) inset;
+  /*overflow-y: scroll;*/
+}
 
 .hold{border:1px dashed #828282;}
 .d-none{display: none;}
-.hovered{background-color: rgba(198, 198, 198, 0.36); border: 1px dashed #317c86; border-radius: 5px;}
+.hovered{background-color: rgba(190, 190, 190, 0.66); border: 1px dashed #317c86; border-radius: 5px;}
 
 .start {
   background: linear-gradient(35deg, #fd6868 0%, #b3147e 179.25%);
