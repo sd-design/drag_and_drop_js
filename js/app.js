@@ -58,8 +58,9 @@ function dragDrop(event){
 	//console.log(itemDrop)
 	event.target.classList.remove('hovered')
 	if(idPlaceholder != null && idPlaceholder != undefined){
+		console.log('placeholder: ', idPlaceholder, 'item ', itemId)
 		let placeholderDrop = document.querySelector(`[data-placeholder="${idPlaceholder}"]`)
-		event.target.append(itemDrop)
+		placeholderDrop.append(itemDrop)
 	}
 	
 }
