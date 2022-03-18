@@ -1,4 +1,20 @@
  console.log('%c Application is running', 'background: #222; color: #bada55; padding:15px')
+ const newElement = (tag, clas, id, body) => {
+	const node = document.createElement(tag);
+	if(clas) {
+		node.classList.add(clas);
+	}
+	if(body){
+		node.textContent = body
+	}
+	if(id){
+		node.id = id
+	}
+	return node
+}
+ getTasks()
+//  let myEl = newElement('div', 'item', 'hello-1','my text')
+//  console.log(myEl)
 
  const items = document.querySelectorAll('.item')
  const placeholders = document.querySelectorAll('.placeholder')
@@ -64,4 +80,36 @@ function dragDrop(event){
 	}
 	
 }
+
+function getTasks(){
+	let myTasks;
+	fetch('http://localhost:3000/tasks').then(response=>{
+		if(response.ok){
+			return response.json();
+		}
+		throw new Error('Request failed');
+	},
+	networkError => {
+		console.log(networkError.message);
+
+	}).then(jsonResponse => {
+		showTasks(jsonResponse);
+	})
+
+}
+
+function showTasks(tasks){
+	tasks.forEach((task)=>{
+//console.log(task.id, task.text)
+		console.log(newElement('div', 'item', task.id, task.text))
+	})
+
+}
+const checkBox = () => {
+	console.log(document.querySelector('#my-checkbox').checked);
+}
+
+document.querySelector('#my-checkbox').addEventListener('click',checkBox)
+
+
 
