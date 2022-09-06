@@ -3,9 +3,9 @@
       { "id": 1, "title": "json-server", "author": "typicode" }
     ],
     "tasks": [
-        { "id": 1, "title": "json-server", "text": "task #1", "placeholder": 1},
-        { "id": 2, "title": "New task", "text": "task #2 - new task", "placeholder": 2},
-        { "id": 3, "title": "Old task", "text": "task #3 - old task", "placeholder": 3 }
+        { "id": 1, "title": "json-server", "text": "task #1 | json", "placeholder": 1},
+        { "id": 2, "title": "New task", "text": "task #2 - new task | json", "placeholder": 2},
+        { "id": 3, "title": "Old task", "text": "task #3 - old task | json", "placeholder": 3 }
       ],
     "comments": [
       { "id": 1, "body": "some comment", "postId": 1 }

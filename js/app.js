@@ -1,6 +1,7 @@
  console.log('%c Application is running', 'background: #222; color: #bada55; padding:15px')
  const newElement = (tag, clas, id, body) => {
 	const node = document.createElement(tag);
+	
 	if(clas) {
 		node.classList.add(clas);
 	}
@@ -8,33 +9,38 @@
 		node.textContent = body
 	}
 	if(id){
-		node.id = id
+		// node.id = id
+		node.dataset.id = id
 	}
+	node.draggable = 'true'
 	return node
 }
  getTasks()
 //  let myEl = newElement('div', 'item', 'hello-1','my text')
 //  console.log(myEl)
+function initialize()
+{
+	const items = document.querySelectorAll('.item')
+	const placeholders = document.querySelectorAll('.placeholder')
+	let itemId = null
+	let idPlaceholder = null
+   
+   items.forEach((item)=>{
+	   item.addEventListener('dragstart', dragStart)
+	   item.addEventListener('dragend', dragEnd)
+   
+	   placeholders.forEach((placeholder)=> {
+	   placeholder.addEventListener('dragover', dragOver)
+	   placeholder.addEventListener('dragenter', dragEnter)
+	   placeholder.addEventListener('dragleave', dragleave)
+	   placeholder.addEventListener('drop', dragDrop)
+   })
+   
+   })
 
- const items = document.querySelectorAll('.item')
- const placeholders = document.querySelectorAll('.placeholder')
- let itemId = null
- let idPlaceholder = null
-
-items.forEach((item)=>{
-	item.addEventListener('dragstart', dragStart)
-	item.addEventListener('dragend', dragEnd)
+}
 
 
-
-	placeholders.forEach((placeholder)=> {
-	placeholder.addEventListener('dragover', dragOver)
-	placeholder.addEventListener('dragenter', dragEnter)
-	placeholder.addEventListener('dragleave', dragleave)
-	placeholder.addEventListener('drop', dragDrop)
-})
-
-})
 
 
 function dragStart(event){
@@ -94,6 +100,7 @@ function getTasks(){
 
 	}).then(jsonResponse => {
 		showTasks(jsonResponse);
+		initialize()
 	})
 
 }
@@ -101,6 +108,9 @@ function getTasks(){
 function showTasks(tasks){
 	tasks.forEach((task)=>{
 //console.log(task.id, task.text)
+let newItem = newElement('div', 'item', task.id, task.text)
+let el1 = document.querySelector('[data-placeholder="1"]')
+el1.appendChild(newItem)
 		console.log(newElement('div', 'item', task.id, task.text))
 	})
 
