@@ -109,9 +109,20 @@ function showTasks(tasks){
 	tasks.forEach((task)=>{
 //console.log(task.id, task.text)
 let newItem = newElement('div', 'item', task.id, task.text)
-let el1 = document.querySelector('[data-placeholder="1"]')
-el1.appendChild(newItem)
-		console.log(newElement('div', 'item', task.id, task.text))
+let list1 = document.querySelector('[data-placeholder="1"]')
+let list2 = document.querySelector('[data-placeholder="2"]')
+let list3 = document.querySelector('[data-placeholder="3"]')
+
+if(task.placeholder == 1){
+	list1.appendChild(newItem)
+}
+if(task.placeholder == 2){
+	list2.appendChild(newItem)
+}
+if(task.placeholder == 3){
+	list3.appendChild(newItem)
+}
+		//console.log(newElement('div', 'item', task.id, task.text))
 	})
 
 }
